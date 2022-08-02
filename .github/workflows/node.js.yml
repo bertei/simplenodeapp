@@ -19,7 +19,7 @@ jobs:
           FIRST_NAME: Berna
         run: echo $MY_VAR $FIRST_NAME
       - name: my second job
-        if: sucess()
+        if: success()
         run: echo "The previous step has finished sucessfully."
         
           
