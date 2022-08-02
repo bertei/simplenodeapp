@@ -1,8 +1,5 @@
 name: build
-on:
-  push:
-    paths:
-      - '**.js'
+on: push
 
 jobs:
   build:
@@ -16,13 +13,17 @@ jobs:
           - os: macos-latest
             node: 10
     steps:
-      - uses: actions/checkout@v2
-      - name: Use node.js ${{ matrix.node }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node }}
-      - run: npm ci
-      - run: npm run build --if-present
+      - name: My first step
+        env:
+          MY_VAR: Hi there! my name is
+          FIRST_NAME: Berna
+        run: echo $MY_VAR $FIRST_NAME
+      - name: my second job
+        if: sucess()
+        run: echo "The previous step has finished sucessfully."
+        
+          
+        
       
         
     
